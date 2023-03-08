@@ -1,5 +1,4 @@
-﻿ I'm still developing this, thank you
-# AndroidSwipeBackLayout 📕
+﻿# AndroidSwipeBackLayout 📕
 
 An library that can make your Fragment & Activity swipeable
 
@@ -8,12 +7,15 @@ An library that can make your Fragment & Activity swipeable
 ## Gradle Dependency 🔨
 
 ```gradle 
-repositories {
-    maven { url 'https://jitpack.io' }
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
 }
 
 dependencies {
-    implementation 'com.'
+	implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0'
 }
 ```
 ## Example 😎
@@ -36,7 +38,7 @@ Download here : [**Google Play**](https://play.google.com/store/apps/details?id=
 ....
 
 dependencies {
-    implementation 'com.'
+    implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0'
 }
 ```
 ### Step 2. Extends your Activity
