@@ -68,8 +68,8 @@ Your root view must be single
 
 Set theme for your activity, this will make your activity have transparent background and see though when swipe
 ```xml
-<item name="android:windowBackground">@color/transparent</item>
 <item name="android:windowIsTranslucent">true</item>
+<item name="android:windowBackground">@android:color/transparent</item>
 ```
 ## Documentation 📄
 ### 1. Activity
@@ -135,6 +135,12 @@ class YourActivity : AppCompatActivity(), SwipeListener {
 #### 1.3. Without Extends SwipeActivity, you can wrap you root view with SwipeLayout in Activity
 [**Check my SwipeBackActivity**](https://github.com/dattran2k/AndroidSwipeBackLayout/blob/master/SwipeLayout/src/main/java/com/dat/swipe_layout/SwipeBackActivity.kt)
 ### 2. Fragment
+
+First, sorry to say, if you are using navigation component, you can't use this lib because navigation component use replace() fragment by default, 
+that means when you navigate to other fragment, your previous Fragment will run onDestroyView() so you can't see any things previous
+
+Navigate between Fragment using add() will work
+
 #### 2.1. Extends base SwipeableFragment with viewBinding
 Base SwipeableFragment : [**Source code**](https://github.com/dattran2k/AndroidSwipeBackLayout/tree/master/app/src/main/java/com/dat/swipe_example/swipe_fragment/base_fragment)
 
@@ -259,6 +265,8 @@ git clone https://github.com/dattran2k/AndroidSwipeBackLayout.git
 If you have any feedback, please reach out to me at trandat728@gmail.com, telegram : @Dat2030
 
 Or my [**Facebook**](https://www.facebook.com/dat.20.30/)
+
+I'm just small developer, you can contact me any time if you wanna help or have new idea for this lib
 
 ## Authors 👷
 
