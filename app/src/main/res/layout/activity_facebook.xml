@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="48dp"
+        android:textStyle="bold"
+        android:background="@color/black_alpha"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:text="Animation of Facebook IOS,\n I see it better than Android so I'm making it\n swipe Left to Right slow to see animation of previous Actvity"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_facebook" />
+</FrameLayout>

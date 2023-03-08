@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Try your Setting "
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <include
+            android:id="@+id/scrim_start_alpha"
+            layout="@layout/custom_seek_bar" />
+
+        <include
+            android:id="@+id/scrim_end_alpha"
+            layout="@layout/custom_seek_bar" />
+
+        <include
+            android:id="@+id/scrim_thresh_hold"
+            layout="@layout/custom_seek_bar" />
+
+        <include
+            android:id="@+id/distance_thresh_hold"
+            layout="@layout/custom_seek_bar" />
+
+
+        <include
+            android:id="@+id/swipe_position"
+            layout="@layout/custom_radio" />
+
+        <include
+            android:id="@+id/is_dismiss_right_away"
+            layout="@layout/custom_radio" />
+
+        <include
+            android:id="@+id/is_enable_scrim"
+            layout="@layout/custom_radio" />
+
+        <include
+            android:id="@+id/is_full_screen_scrim"
+            layout="@layout/custom_radio" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_time_quick_dismiss"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:hint="Time quick dismiss , millisecond"
+            android:inputType="number"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Start Activity GoGo"
+            android:textColor="@color/black" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>
+

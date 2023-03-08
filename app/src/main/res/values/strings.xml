@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SwipeLayout</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="image_description">Image</string>
+
+    // text
+    <string name="scrim_start_alpha">Scrim start alpha : </string>
+    <string name="scrim_end_alpha">Scrim end alpha : </string>
+    <string name="scrim_threshold">Scrim threshold : </string>
+    <string name="distance_threshold">Distance threshold : </string>
+    <string name="swipe_position">Swipe position, this is the most important : </string>
+    <string name="is_dismiss_right_away">Is dismiss right away : </string>
+    <string name="is_full_screen_scrim">Is full scrim screen : </string>
+    <string name="is_enable_scrim">Is enable scrim : </string>
+    <string name="hello">This is example app of\n\'AndroidSwipeBackLayout\' library\n by https://github.com/dattran2k</string>
+
+</resources>
