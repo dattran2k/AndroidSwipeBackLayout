@@ -1,4 +1,6 @@
-﻿# AndroidSwipeBackLayout 📕
+[![](https://jitpack.io/v/dattran2k/AndroidSwipeBackLayout.svg)](https://jitpack.io/#dattran2k/AndroidSwipeBackLayout)
+
+# AndroidSwipeBackLayout 📕
 
 An library that can make your Fragment & Activity swipeable
 
