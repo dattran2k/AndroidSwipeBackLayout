@@ -34,10 +34,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="When you scroll, you can't see previous Fragment because I used replace() to make shared element animation work !!.
-\n If you use add(), you still can see the previous Fragment but no more shared element animaton.\nThat mean if your project use Fragment no navigate .
-you can't use shared element animation, and yes, it's not relevant to my library, but I still wanna write this for who don't know this.\n
-But if any one know how to to add() fragment with shared element, pls fix this example , thank a lot"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
