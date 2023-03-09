@@ -15,7 +15,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0'
+	implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.1'
 }
 ```
 ## Example 😎
@@ -38,7 +38,7 @@ Download here : [**Google Play**](https://play.google.com/store/apps/details?id=
 ....
 
 dependencies {
-    implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0'
+    implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.1'
 }
 ```
 ### Step 2. Extends your Activity
@@ -67,6 +67,7 @@ Your root view must be single
 ### Step 4. Theme
 
 Set theme for your activity, this will make your activity have transparent background and see though when swipe
+
 ```xml
 <item name="android:windowIsTranslucent">true</item>
 <item name="android:windowBackground">@android:color/transparent</item>
@@ -99,8 +100,6 @@ Activity
 class YourActivity : AppCompatActivity(), SwipeListener {
     private lateinit var binding: YourActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        // set this to make activity transpa
-        window.setBackgroundDrawableResource(android.R.color.transparent)
         super.onCreate(savedInstanceState)
         binding = YourActivityBinding.inflate(layoutInflater)
         // set your config here
@@ -116,7 +115,6 @@ class YourActivity : AppCompatActivity(), SwipeListener {
     override fun onSwipeStateChanged(state: Int) {
 
     }
-
     override fun onSwipeChange(percent: Float) {
 
     }
@@ -134,24 +132,28 @@ class YourActivity : AppCompatActivity(), SwipeListener {
 ````
 #### 1.3. Without Extends SwipeActivity, you can wrap you root view with SwipeLayout in Activity
 [**Check my SwipeBackActivity**](https://github.com/dattran2k/AndroidSwipeBackLayout/blob/master/SwipeLayout/src/main/java/com/dat/swipe_layout/SwipeBackActivity.kt)
-### 2. Fragment
+### 2. Fragment, there are 2 ways to implement
 
 First, sorry to say, if you are using navigation component, you can't use this lib because navigation component use replace() fragment by default, 
 that means when you navigate to other fragment, your previous Fragment will run onDestroyView() so you can't see any things previous
 
 Navigate between Fragment using add() will work
 
-#### 2.1. Extends base SwipeableFragment with viewBinding
-Base SwipeableFragment : [**Source code**](https://github.com/dattran2k/AndroidSwipeBackLayout/tree/master/app/src/main/java/com/dat/swipe_example/swipe_fragment/base_fragment)
+#### 2.1. Extends SwipeBackFragment
 
-Fragment
+Fragment, wrap your root view with wrapSwipeLayout(yourRootView)
+
 ````kotlin
-class SecondFragment : BaseSwipeableFragment<FragmentSecondBinding>(FragmentSecondBinding::inflate) {
-    // if you wanna override your config
-    override fun getSwipeConfig() = SwipeLayoutConfig.Builder()
-        .listener(this)
-        .swipeDirection(SwipeDirection.LEFT_TO_RIGHT)
-        .build()
+
+class SecondFragment : SwipeBackFragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSecondBinding.inflate(layoutInflater)
+        return wrapSwipeLayout(binding.root)
+    }
 }
 ````
 Xml
@@ -162,7 +164,7 @@ Xml
     android:layout_height="match_parent">
 </androidx.constraintlayout.widget.ConstraintLayout>
 ````
-#### 2.2. Without extends base SwipeableFragment
+#### 2.2. Wrap your root view in xml
 Fragment
 ````kotlin
 class ThirdFragment : BaseFragment<FragmentThirdBinding>(FragmentThirdBinding::inflate),
@@ -178,6 +180,16 @@ class ThirdFragment : BaseFragment<FragmentThirdBinding>(FragmentThirdBinding::i
             .listener(this)
             .position(SwipeDirection.LEFT_TO_RIGHT)
             .build()
+    }
+    override fun onSwipeStateChanged(state: Int) {}
+
+    override fun onSwipeChange(percent: Float) {}
+
+    override fun onSwipeOpened() {}
+
+    override fun onSwipeClosed() {
+        // your code when swipe close
+        NavigationManager.getInstance().popBackStack()
     }
 }
 ````
@@ -258,7 +270,6 @@ So if you don't do that, your "ScrollAbleView" cant' scroll at all
 ```cmd
 git clone https://github.com/dattran2k/AndroidSwipeBackLayout.git
 ```
-
 
 ## Feedback 📬
 

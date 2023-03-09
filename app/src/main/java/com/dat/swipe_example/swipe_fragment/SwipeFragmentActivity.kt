@@ -14,7 +14,7 @@ class SwipeFragmentActivity : SwipeBackActivity(), FragmentManager.OnBackStackCh
         super.onCreate(savedInstanceState)
         binding = ActivitySwipeFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        NavigationManager.getInstance().init(this, supportFragmentManager, R.id.fragment_container)
+        NavigationManager.getInstance().init(supportFragmentManager, R.id.fragment_container)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, FirstFragment(), "FirstFragment")
