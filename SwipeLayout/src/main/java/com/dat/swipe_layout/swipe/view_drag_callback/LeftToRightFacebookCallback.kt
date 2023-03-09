@@ -44,7 +44,7 @@ class LeftToRightFacebookCallback(
         changedView: View, left: Int, top: Int, dx: Int, dy: Int
     ) {
         super.onViewPositionChanged(changedView, left, top, dx, dy)
-        if (startSwipeTime == 0L) startSwipeTime = System.currentTimeMillis()
+
         val percent = 1f - abs(left).toFloat() / screenWidth.toFloat()
         if (left > 0) isEnableScrollRight = true
         viewDragHelperListener.onSwipeChange(percent)
@@ -53,6 +53,6 @@ class LeftToRightFacebookCallback(
     override fun onViewDragStateChanged(state: Int) {
         super.onViewDragStateChanged(state)
         Log.e(SwipeLayout.TAG, "onViewDragStateChanged: $state + ${decorView.left}")
-        updateDragStateChange(state, decorView.left)
+         viewDragHelperListener.onDragStateChanged(state, decorView.left)
     }
 }

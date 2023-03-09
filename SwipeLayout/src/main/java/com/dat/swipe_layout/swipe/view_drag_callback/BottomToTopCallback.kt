@@ -37,13 +37,12 @@ class BottomToTopCallback(
         changedView: View, left: Int, top: Int, dx: Int, dy: Int
     ) {
         super.onViewPositionChanged(changedView, left, top, dx, dy)
-        if (startSwipeTime == 0L) startSwipeTime = System.currentTimeMillis()
         val percent = 1f - abs(top).toFloat() / screenHeight.toFloat()
         viewDragHelperListener.onSwipeChange(percent)
     }
 
     override fun onViewDragStateChanged(state: Int) {
         super.onViewDragStateChanged(state)
-        updateDragStateChange(state, decorView.top)
+        viewDragHelperListener.onDragStateChanged(state, decorView.top)
     }
 }

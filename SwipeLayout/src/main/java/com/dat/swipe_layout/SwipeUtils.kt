@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 
-// I take it from : http://www.java2s.com/example/android/android.app/activity-property-index.html
+/**
+ * I take it from : http://www.java2s.com/example/android/android.app/activity-property-index.html
+ * I stopped use this because when set your activity to Translucent, some how shared element animation got interrupt
+ * */
 object SwipeUtils {
     /** set activity translucent and transparent background
     * or set on theme :
