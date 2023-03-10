@@ -11,7 +11,10 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
 import androidx.customview.widget.ViewDragHelper
-import com.dat.swipe_layout.model.*
+import com.dat.swipe_layout.model.SwipeDirection
+import com.dat.swipe_layout.model.SwipeLayoutConfig
+import com.dat.swipe_layout.model.ViewDragHelperListener
+import com.dat.swipe_layout.model.ViewDragHelperParams
 import com.dat.swipe_layout.swipe.view_drag_callback.*
 
 
@@ -24,26 +27,34 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
         }
     }
 
+    private var config: SwipeLayoutConfig = SwipeLayoutConfig.Builder().build()
+
     private var screenWidth = 0
     private var screenHeight = 0
+
+    // child view inside SwipeLayout
     private var decorView: View? = null
+
     private lateinit var dragHelper: ViewDragHelper
 
     private var isLocked = false
     private var isEdgeTouched = false
-    private var startSwipeTime = 0L
-    private var config: SwipeLayoutConfig = SwipeLayoutConfig.Builder().build()
+
+
     private var decorViewLeftOffset = 0
 
-    // scrim
+    // for scrim draw
     private lateinit var scrimPaint: Paint
     private lateinit var scrimRenderer: ScrimRenderer
+
+    private var startSwipeTime = 0L
 
     constructor(context: Context) : super(context)
     constructor(context: Context, decorView: View, config: SwipeLayoutConfig?) : super(context) {
         this.decorView = decorView
         this.config = config ?: SwipeLayoutConfig.Builder().build()
         init()
+        updateConfigCallback()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -56,11 +67,12 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
         if (childCount > 1) throw IllegalArgumentException("child must be single layout")
         decorView = getChildAt(0)
         init()
+        updateConfigCallback()
     }
 
     fun setLateConfig(config: SwipeLayoutConfig) {
         this.config = config
-        setConfigCallback()
+        updateConfigCallback()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -138,8 +150,8 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
         scrimRenderer.render(canvas, config.swipeDirection, scrimPaint, config.isFullScreenScrim)
     }
 
-    private fun setConfigCallback() {
-        if(decorView == null)
+    private fun updateConfigCallback() {
+        if (decorView == null)
             return
         val params = ViewDragHelperParams(decorView!!, config, screenWidth, screenHeight, this)
         val callback = when (config.swipeDirection) {
@@ -162,7 +174,6 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
     }
 
     private fun init() {
-
         setBackgroundColor(Color.TRANSPARENT)
         setWillNotDraw(false)
         screenWidth = resources.displayMetrics.widthPixels
@@ -170,7 +181,7 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
         // Setup the dimmer view
         scrimPaint = Paint()
         scrimRenderer = ScrimRenderer(this, decorView!!)
-        setConfigCallback()
+        updateConfigCallback()
     }
 
 
@@ -194,6 +205,9 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
         }
     }
 
+    /**
+     * draw scrim
+     */
     private fun applyScrim(percent: Float) {
         if (!config.isEnableScrim) return
         var realPercent = (percent - config.scrimThreshHold) / (1 - config.scrimThreshHold)
@@ -208,12 +222,10 @@ class SwipeLayout : FrameLayout, ViewDragHelperListener {
     }
 
     fun lock() {
-//        dragHelper.abort()
         isLocked = true
     }
 
     fun unlock() {
-//        dragHelper.abort()
         isLocked = false
     }
 

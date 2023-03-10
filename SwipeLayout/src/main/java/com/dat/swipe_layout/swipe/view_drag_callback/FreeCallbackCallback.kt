@@ -54,7 +54,6 @@ class FreeCallbackCallback(
         changedView: View, left: Int, top: Int, dx: Int, dy: Int
     ) {
         super.onViewPositionChanged(changedView, left, top, dx, dy)
-        if (startSwipeTime == 0L) startSwipeTime = System.currentTimeMillis()
         val percentHeight = 1f - abs(top).toFloat() / screenHeight.toFloat()
         val percentWidth = 1f - abs(left).toFloat() / screenWidth.toFloat()
         val percent = (percentHeight + percentWidth) / 2f
@@ -63,8 +62,6 @@ class FreeCallbackCallback(
 
     override fun onViewDragStateChanged(state: Int) {
         super.onViewDragStateChanged(state)
-        // TODO dragstate jump to 0, check
-        Log.e(SwipeLayout.TAG, "onViewDragStateChanged: $state + ${decorView.left} + ${decorView.top}")
-        updateDragStateChange(state, decorView.left, decorView.top)
+         viewDragHelperListener.onDragStateChanged(state, decorView.left, decorView.top)
     }
 }

@@ -30,7 +30,7 @@ class ConfigOpenActivity : SwipeBackActivity() {
         const val TAG = "ActivityConfigOpen"
     }
 
-    val config = SwipeLayoutConfig.BuilderEmpty().build()
+    val config = SwipeLayoutConfig.Builder().build()
     private lateinit var binding: ActivityConfigOpenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -181,7 +181,7 @@ class ConfigOpenActivity : SwipeBackActivity() {
             it.title.text = "config.isEnableScrim : "
 
             addRadioButtons(it.radioGroup, listOf(true, false)) {
-                config.isEnableScrim = false
+                config.isEnableScrim = it
                 updateValue()
             }
         }

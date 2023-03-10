@@ -6,7 +6,10 @@ import com.dat.swipe_layout.model.SwipeDirection
 import com.dat.swipe_layout.model.SwipeLayoutConfig
 import com.dat.swipe_layout.model.SwipeListener
 import com.dat.swipe_layout.swipe.SwipeLayout
-
+/**
+ * SwipeBackFragment will wrap your root view by SwipeLayout by default
+ * and set config by default
+ */
 abstract class SwipeBackFragment : Fragment(), SwipeListener {
     var swipeLayout: SwipeLayout? = null
     fun wrapSwipeLayout(view: View) : SwipeLayout{

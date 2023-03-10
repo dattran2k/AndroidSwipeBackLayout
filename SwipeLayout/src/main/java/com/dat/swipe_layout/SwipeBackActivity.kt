@@ -7,6 +7,10 @@ import com.dat.swipe_layout.model.SwipeListener
 import com.dat.swipe_layout.model.SwipeDirection
 import com.dat.swipe_layout.swipe.SwipeLayout
 
+/**
+ * SwipeBackActivity will wrap your root view by SwipeLayout by default
+ * and set config by default
+*/
 abstract class SwipeBackActivity : AppCompatActivity(), SwipeListener {
     var swipeLayout: SwipeLayout? = null
     override fun setContentView(view: View) {
@@ -19,7 +23,6 @@ abstract class SwipeBackActivity : AppCompatActivity(), SwipeListener {
     open fun getSwipeConfig(): SwipeLayoutConfig {
         return SwipeLayoutConfig.Builder()
             .listener(this)
-            .swipeDirection(SwipeDirection.LEFT_TO_RIGHT)
             .build()
     }
 

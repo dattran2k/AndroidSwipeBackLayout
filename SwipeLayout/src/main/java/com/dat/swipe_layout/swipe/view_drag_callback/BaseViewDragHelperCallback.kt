@@ -1,6 +1,7 @@
 package com.dat.swipe_layout.swipe.view_drag_callback
 
 import android.util.Log
+import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.customview.widget.ViewDragHelper
 import com.dat.swipe_layout.model.ViewDragHelperParams
@@ -11,7 +12,7 @@ abstract class BaseViewDragHelperCallback(
     params: ViewDragHelperParams
 ) : ViewDragHelper.Callback() {
 
-    protected var config = params.config
+    private var config = params.config
     protected var decorView = params.decorView
     protected var screenWidth = params.screenWidth
     protected var screenHeight = params.screenHeight
@@ -41,12 +42,12 @@ abstract class BaseViewDragHelperCallback(
         return 0
     }
 
-    fun updateDragStateChange(state: Int, vararg position: Int?) {
-        viewDragHelperListener.onDragStateChanged(state, *position)
-
+    override fun onViewPositionChanged(changedView: View, left: Int, top: Int, dx: Int, dy: Int) {
+        super.onViewPositionChanged(changedView, left, top, dx, dy)
+        if (startSwipeTime == 0L) startSwipeTime = System.currentTimeMillis()
     }
 
-    fun checkIsQuickDismiss(): Boolean {
+    private fun checkIsQuickDismiss(): Boolean {
         val timeQuickDismiss = config.timeQuickDismiss ?: return false
         val currentTime = System.currentTimeMillis()
         val start = startSwipeTime
@@ -58,30 +59,30 @@ abstract class BaseViewDragHelperCallback(
         return false
     }
 
-    fun checkDisMissRightAway(vararg default: Int): Boolean {
+    protected fun checkDisMissRightAway(vararg default: Int): Boolean {
         if (default.any { it != 0 } && config.isDismissRightAway)
             return true
         return false
     }
 
-    fun getClampTop() = if (!canChildScrollDown()) -screenHeight else 0
-    fun getClamBottom() = if (!canChildScrollUp()) screenHeight else 0
-    fun getClampLeft() = if (!canChildScrollRight()) -screenWidth else 0
-    fun getClamRight() = if (!canChildScrollLeft()) screenHeight else 0
+    protected fun getClampTop() = if (!canChildScrollDown()) -screenHeight else 0
+    protected fun getClamBottom() = if (!canChildScrollUp()) screenHeight else 0
+    protected fun getClampLeft() = if (!canChildScrollRight()) -screenWidth else 0
+    protected fun getClamRight() = if (!canChildScrollLeft()) screenHeight else 0
 
-    fun canChildScrollUp(): Boolean {
+    private fun canChildScrollUp(): Boolean {
         return ViewCompat.canScrollVertically(decorView, -1)
     }
 
-    fun canChildScrollDown(): Boolean {
+    private fun canChildScrollDown(): Boolean {
         return ViewCompat.canScrollVertically(decorView, 1)
     }
 
-    fun canChildScrollLeft(): Boolean {
+    private fun canChildScrollLeft(): Boolean {
         return ViewCompat.canScrollHorizontally(decorView, -1)
     }
 
-    fun canChildScrollRight(): Boolean {
+    private fun canChildScrollRight(): Boolean {
         return ViewCompat.canScrollHorizontally(decorView, 1)
     }
 }
