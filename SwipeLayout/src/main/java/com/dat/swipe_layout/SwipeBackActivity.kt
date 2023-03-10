@@ -4,7 +4,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.dat.swipe_layout.model.SwipeLayoutConfig
 import com.dat.swipe_layout.model.SwipeListener
-import com.dat.swipe_layout.model.SwipeDirection
 import com.dat.swipe_layout.swipe.SwipeLayout
 
 /**
