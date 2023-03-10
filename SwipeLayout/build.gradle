@@ -9,11 +9,10 @@ java {
 }
 android {
     namespace 'com.dat.swipe_layout'
-    compileSdk 32
-
+    compileSdkVersion 29
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 29
     }
 
     buildTypes {
@@ -34,7 +33,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    implementation 'com.google.android.material:material:1.8.0'
 }
 
 afterEvaluate {
