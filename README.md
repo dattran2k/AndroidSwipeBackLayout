@@ -17,7 +17,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.4'
+	implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.5'
 }
 ```
 ## Example 😎
@@ -40,7 +40,7 @@ Download here : [**Google Play**](https://play.google.com/store/apps/details?id=
 ....
 
 dependencies {
-    implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.4'
+    implementation 'com.github.dattran2k:AndroidSwipeBackLayout:1.0.5'
 }
 ```
 ### Step 2. Extends your Activity
