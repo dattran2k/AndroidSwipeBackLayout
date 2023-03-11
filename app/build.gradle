@@ -1,11 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
 }
 
 android {
-    compileSdk versions.compileSdk
+    namespace 'com.dat.swipe_example'
 
+    compileSdk versions.compileSdk
     defaultConfig {
         applicationId "com.dat.swipe_example"
         minSdkVersion versions.minSdk
@@ -32,7 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'com.dat.swipe_example'
+
 }
 
 dependencies {
