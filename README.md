@@ -273,14 +273,6 @@ So if you don't do that, your "ScrollAbleView" cant' scroll at all
 git clone https://github.com/dattran2k/AndroidSwipeBackLayout.git
 ```
 
-## Feedback 📬
-
-If you have any feedback, please reach out to me at trandat728@gmail.com, telegram : @Dat2030
-
-Or my [**Facebook**](https://www.facebook.com/dat.20.30/)
-
-I'm just small developer, you can contact me any time if you wanna help or have new idea for this lib
-
 ## Authors 👷
 
 - [@dattran2k]https://github.com/dattran2k)
